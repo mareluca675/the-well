@@ -3,10 +3,10 @@ extends CharacterBody3D
 @onready var camera_3d = $Camera3D
 
 const SPEED = 100.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 50
 const CAMERA_SENS = 0.003
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var gravity = 100
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
