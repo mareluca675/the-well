@@ -2,12 +2,20 @@ extends CharacterBody3D
 
 @onready var camera_3d = $Camera3D
 
+const gravity = 100
+#movement
 const SPEED = 100.0
 const CROUCH_MOD = 0.5
 const SPRINT_MOD = 2
 const JUMP_VELOCITY = 50
+
+#camera
 const CAMERA_SENS = 0.003
-const gravity = 100
+const CAMERA_V_OFFSET = 0
+const CROUCH_CAMERA_V_OFFSET_MOD = -5
+const BASE_FOV = 75
+const CROUCH_FOV_MOD = 15
+const SPRINT_FOV_MOD = 15
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -32,15 +40,23 @@ func _physics_process(delta):
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	var crouching = Input.is_action_pressed("crouch")
-	var sprinting = Input.is_action_pressed("run")
-	var modifier
+	var sprinting = Input.is_action_pressed("sprint")
+	var modifier = 1
 	
-	if crouching:
-		modifier = CROUCH_MOD
-	elif sprinting:
-		modifier = SPRINT_MOD
-	else:
-		modifier = 1
+	camera_3d.v_offset = CAMERA_V_OFFSET
+	camera_3d.fov = BASE_FOV
+	
+	if is_on_floor():
+		if crouching:
+			modifier = CROUCH_MOD
+			
+			camera_3d.v_offset = CROUCH_CAMERA_V_OFFSET_MOD
+			camera_3d.fov = BASE_FOV - CROUCH_FOV_MOD
+		elif sprinting:
+			modifier = SPRINT_MOD
+			camera_3d.fov = BASE_FOV - SPRINT_FOV_MOD
+		else:
+			modifier = 1
 	
 	if direction:
 		velocity.x = direction.x * SPEED * modifier
