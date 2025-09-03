@@ -27,7 +27,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="PlayerRaycast" type="RayCast3D" parent="CharacterBody3D/Head/Camera3D"]
 unique_name_in_owner = true
-target_position = Vector3(0, -1, -12)
+target_position = Vector3(0, -1, -15)
 collision_mask = 128
 
 [node name="UI" type="CanvasLayer" parent="CharacterBody3D"]

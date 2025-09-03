@@ -1,21 +1,27 @@
 extends CharacterBody3D
 
 @onready var camera_3d = $Head/Camera3D
+@onready var head = $Head
 
-# movement
+# Movement constants
 const SPEED = 100.0
 const CROUCH_MOD = 0.5
 const SPRINT_MOD = 2
 const JUMP_VELOCITY = 50
 
-# camera
-const CAMERA_SENS = 0.003
+# Camera constants
+const CAMERA_SENS = 0.002
 const CAMERA_V_OFFSET = 0
 const CROUCH_CAMERA_V_OFFSET_MOD = -5
 const BASE_FOV = 75
-const CROUCH_FOV_MOD = 15
-const SPRINT_FOV_MOD = 15
+const CROUCH_FOV_MOD = 0
+const SPRINT_FOV_MOD = -15
 const GRAVITY = 100
+
+# Bob variables
+const BOB_FREQ = 2.4
+const BOB_AMP = 0.08
+var t_bob = 0.0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -30,11 +36,6 @@ func _input(event):
 
 func _physics_process(delta):
 	# Player movement script
-	if not is_on_floor():
-		velocity.y -= GRAVITY * delta
-
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
 
 	var input_dir = Input.get_vector("move_left", "move_right", "move_forward", "move_back")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -45,6 +46,9 @@ func _physics_process(delta):
 	
 	camera_3d.v_offset = CAMERA_V_OFFSET
 	camera_3d.fov = BASE_FOV
+	
+	if Input.is_action_just_pressed("jump") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
 	
 	if is_on_floor():
 		if crouching:
@@ -57,13 +61,17 @@ func _physics_process(delta):
 			camera_3d.fov = BASE_FOV - SPRINT_FOV_MOD
 		else:
 			modifier = 1
-	
-	if direction:
-		velocity.x = direction.x * SPEED * modifier
-		velocity.z = direction.z * SPEED * modifier
+			
+		if direction:
+			velocity.x = direction.x * SPEED * modifier
+			velocity.z = direction.z * SPEED * modifier
+		else:
+			velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 7.0)
+			velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 7.0)
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED * modifier)
-		velocity.z = move_toward(velocity.z, 0, SPEED * modifier)
+		velocity.y -= GRAVITY * delta
+		velocity.x = lerp(velocity.x, direction.x * SPEED, delta * 3.0)
+		velocity.z = lerp(velocity.z, direction.z * SPEED, delta * 3.0)
 	
 	move_and_slide()
 	
