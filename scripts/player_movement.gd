@@ -1,6 +1,7 @@
 extends CharacterBody3D
 
-@onready var camera_3d = $Camera3D
+@onready var camera_3d = $Head/Camera3D
+@onready var head = $Head
 
 const SPEED = 100.0
 const CROUCH_MOD = 0.5
@@ -48,5 +49,5 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED * modifier)
 		velocity.z = move_toward(velocity.z, 0, SPEED * modifier)
-
+	
 	move_and_slide()
