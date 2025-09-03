@@ -1,22 +1,21 @@
 extends CharacterBody3D
 
 @onready var camera_3d = $Head/Camera3D
-@onready var head = $Head
 
-const gravity = 100
-#movement
+# movement
 const SPEED = 100.0
 const CROUCH_MOD = 0.5
 const SPRINT_MOD = 2
 const JUMP_VELOCITY = 50
 
-#camera
+# camera
 const CAMERA_SENS = 0.003
 const CAMERA_V_OFFSET = 0
 const CROUCH_CAMERA_V_OFFSET_MOD = -5
 const BASE_FOV = 75
 const CROUCH_FOV_MOD = 15
 const SPRINT_FOV_MOD = 15
+const GRAVITY = 100
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -27,12 +26,12 @@ func _input(event):
 	if event is InputEventMouseMotion:
 		rotation.y -= event.relative.x * CAMERA_SENS
 		rotation.x -= event.relative.y * CAMERA_SENS
-		rotation.x = clamp(rotation.x, -0.5, 1.2)
+		rotation.x = clamp(rotation.x, -1, 1.2)
 
 func _physics_process(delta):
-
+	# Player movement script
 	if not is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= GRAVITY * delta
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -67,3 +66,25 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED * modifier)
 	
 	move_and_slide()
+	
+	# Raycast for object interaction script
+	
+	# Collision Mask layer 8 for interactive items
+	var player_raycast = %PlayerRaycast
+	var interact_text = $UI/InteractText
+	
+	# Hide the text initially
+	interact_text.hide()
+	
+	# Check if the player raycasts collides with something
+	if player_raycast.is_colliding():
+		# If yes, we get the collider
+		var target = player_raycast.get_collider()
+		
+		# and check if we can interact with it
+		if target and target.has_method("interact"):
+			interact_text.show()
+			
+			# Checking if the player pressed the interact key
+			if Input.is_action_just_pressed("interact"):
+				target.interact()
