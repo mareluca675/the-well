@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var camera_3d = $Head/Camera3D
 
 # movement
+const GRAVITY = 100
 const SPEED = 100.0
 const CROUCH_MOD = 0.5
 const SPRINT_MOD = 2
@@ -13,9 +14,8 @@ const CAMERA_SENS = 0.003
 const CAMERA_V_OFFSET = 0
 const CROUCH_CAMERA_V_OFFSET_MOD = -5
 const BASE_FOV = 75
-const CROUCH_FOV_MOD = 15
+const CROUCH_FOV_MOD = 0
 const SPRINT_FOV_MOD = 15
-const GRAVITY = 100
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
