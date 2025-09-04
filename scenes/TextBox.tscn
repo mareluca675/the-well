@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://bspo265crb0j7"]
+
+[ext_resource type="Script" uid="uid://ce4tveuejibq3" path="res://scripts/text_box.gd" id="1_2g6gp"]
+
+[sub_resource type="GDScript" id="GDScript_3fk4r"]
+script/source = "# TextMeshLoader.gd
+extends TextMesh
+
+@export_file(\"*.txt\") var text_file_path: String:
+	set(value):
+		text_file_path = value
+		load_text_from_file()
+
+# This is a setter method that will automatically run whenever the text_file_path is changed
+
+func _ready():
+	load_text_from_file()
+func load_text_from_file():
+	if not text_file_path.is_empty():
+		var file = FileAccess.open(text_file_path, FileAccess.READ)
+		if FileAccess.get_open_error() == OK:
+			var content = file.get_as_text()
+			self.text = content
+			file.close()
+		else: 
+			print(\"File not found: \" + text_file_path)
+"
+
+[sub_resource type="TextMesh" id="TextMesh_2g6gp"]
+resource_local_to_scene = true
+font_size = 40
+script = SubResource("GDScript_3fk4r")
+text_file_path = "res://assets/texts/foobar.txt"
+
+[node name="TextBox" type="Node3D"]
+script = ExtResource("1_2g6gp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("TextMesh_2g6gp")
