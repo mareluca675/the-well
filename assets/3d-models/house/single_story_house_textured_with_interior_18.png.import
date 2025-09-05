@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://bi7krt68oo38r"
+path.s3tc="res://.godot/imported/single_story_house_textured_with_interior_18.png-dedc9528b89aa4e9a4b42c06413021ec.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "e5be61416e9f6738bc157ad9eab5fe32"
+}
+
+[deps]
+
+source_file="res://assets/3d-models/house/single_story_house_textured_with_interior_18.png"
+dest_files=["res://.godot/imported/single_story_house_textured_with_interior_18.png-dedc9528b89aa4e9a4b42c06413021ec.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://models/single_story_house_textured_with_interior_18.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,24 +1,202 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5khycyxc5nyt"]
+[gd_scene load_steps=15 format=3 uid="uid://c5khycyxc5nyt"]
 
 [ext_resource type="Script" uid="uid://dafuukvr2gj23" path="res://scripts/player.gd" id="1_khb8m"]
+[ext_resource type="AudioStream" uid="uid://d1bsdkgw77o8u" path="res://audio/sfx/papergrab3.ogg" id="2_qhqgy"]
+[ext_resource type="Texture2D" uid="uid://b4soqj8ywte3f" path="res://assets/images/notes/wrinkled paper.jpg" id="3_dqkch"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_khb8m"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dmj5b"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3vyb7"]
+radius = 0.2
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qlg0r"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("2_qhqgy")
+
+[sub_resource type="Texture2D" id="Texture2D_tuyoq"]
+resource_local_to_scene = false
+resource_name = ""
+metadata/_custom_type_script = "uid://caax0fvcifu1b"
+
+[sub_resource type="LabelSettings" id="LabelSettings_fjrip"]
+font_size = 24
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_smehm"]
+font_size = 41
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ur7pv"]
+font_size = 101
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhqgy"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.365384, 0.126715, 0, 1)
+ground_bottom_color = Color(0.0826605, 0.065772, 0.0461518, 1)
+ground_horizon_color = Color(0.154129, 0.158953, 0.166567, 1)
+
+[sub_resource type="Sky" id="Sky_qhqgy"]
+sky_material = SubResource("ProceduralSkyMaterial_qhqgy")
+
+[sub_resource type="Environment" id="Environment_dqkch"]
+background_mode = 2
+background_energy_multiplier = 0.26
+sky = SubResource("Sky_qhqgy")
+tonemap_mode = 2
+
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_khb8m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.8161, 0, 0, 0, 9.8161, 0, 0, 0, 9.8161, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_khb8m")
 skeleton = NodePath("")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_dmj5b")
 
 [node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Head"]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="Head/Camera3D"]
+shape = SubResource("SphereShape3D_3vyb7")
+target_position = Vector3(0, 0, -2)
+collision_mask = 5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D"]
+spot_range = 15.0
+spot_angle = 60.0
+
+[node name="PaperAudio" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_qlg0r")
+
+[node name="UIControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InteractContainer" type="Control" parent="UIControl"]
+layout_mode = 1
+anchor_left = 0.5
+anchor_top = 0.8
+anchor_right = 0.5
+anchor_bottom = 0.8
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UIControl/InteractContainer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="UIControl/InteractContainer/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_tuyoq")
+
+[node name="InteractLabel" type="Label" parent="UIControl/InteractContainer/HBoxContainer"]
+layout_mode = 2
+text = "nothing"
+label_settings = SubResource("LabelSettings_fjrip")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NoteControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NoteTexture" type="TextureRect" parent="NoteControl"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -258.0
+offset_top = -364.0
+offset_right = 258.0
+offset_bottom = 366.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_dqkch")
+expand_mode = 1
+
+[node name="NoteTextLabel" type="Label" parent="NoteControl/NoteTexture"]
+layout_mode = 0
+offset_right = 511.0
+offset_bottom = 726.0
+text = "test test test"
+label_settings = SubResource("LabelSettings_smehm")
+autowrap_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NoteControl"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.966
+anchor_right = 0.5
+anchor_bottom = 0.966
+offset_left = -97.0
+offset_top = -100.0
+offset_right = 97.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="NoteControl/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("Texture2D_tuyoq")
+
+[node name="CloseLabel" type="Label" parent="NoteControl/HBoxContainer"]
+layout_mode = 2
+text = "Close"
+label_settings = SubResource("LabelSettings_fjrip")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PauseControl" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PauseControl"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "PAUSED"
+label_settings = SubResource("LabelSettings_ur7pv")
+horizontal_alignment = 1
+
+[node name="NotesBtnContainer" type="VBoxContainer" parent="PauseControl"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 40.0
+offset_bottom = 20.0
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_dqkch")

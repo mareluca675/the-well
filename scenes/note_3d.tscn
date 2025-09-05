@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bqm6vc8jpnn5e"]
+
+[ext_resource type="Script" uid="uid://bvr5l2dhfs3s0" path="res://scripts/note_3d.gd" id="1_xn2ts"]
+[ext_resource type="Texture2D" uid="uid://b4soqj8ywte3f" path="res://assets/images/notes/wrinkled paper.jpg" id="2_c05wi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0or3w"]
+albedo_texture = ExtResource("2_c05wi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xn2ts"]
+size = Vector3(0.8, 0.1, 0.6)
+
+[node name="Note3D" type="Node3D"]
+script = ExtResource("1_xn2ts")
+
+[node name="NoteMesh" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_0or3w")
+size = Vector3(0.7, 0.001, 0.5)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+shape = SubResource("BoxShape3D_xn2ts")

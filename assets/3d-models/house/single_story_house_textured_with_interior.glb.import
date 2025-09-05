@@ -1,0 +1,49 @@
+[remap]
+
+importer="scene"
+importer_version=1
+type="PackedScene"
+uid="uid://ewklpcyycyw3"
+path="res://.godot/imported/single_story_house_textured_with_interior.glb-824cf6ea0554d610882321875740526a.scn"
+
+[deps]
+
+source_file="res://assets/3d-models/house/single_story_house_textured_with_interior.glb"
+dest_files=["res://.godot/imported/single_story_house_textured_with_interior.glb-824cf6ea0554d610882321875740526a.scn"]
+
+[params]
+
+nodes/root_type=""
+nodes/root_name=""
+nodes/apply_root_scale=true
+nodes/root_scale=0.02
+nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
+meshes/ensure_tangents=true
+meshes/generate_lods=true
+meshes/create_shadow_meshes=true
+meshes/light_baking=1
+meshes/lightmap_texel_size=0.2
+meshes/force_disable_compression=false
+skins/use_named_skins=true
+animation/import=true
+animation/fps=30
+animation/trimming=false
+animation/remove_immutable_tracks=true
+animation/import_rest_as_RESET=false
+import_script/path=""
+_subresources={
+"nodes": {
+"PATH:Sketchfab_model/958d8a0fb6ac487abf69ca317882421e_fbx/RootNode/building_exterior/building_exterior_exterior_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/958d8a0fb6ac487abf69ca317882421e_fbx/RootNode/building_exterior/building_exterior_interior_0": {
+"generate/physics": true
+},
+"PATH:Sketchfab_model/958d8a0fb6ac487abf69ca317882421e_fbx/RootNode/building_floor/building_floor_floor_0": {
+"generate/physics": true
+}
+}
+}
+gltf/naming_version=1
+gltf/embedded_image_handling=1
