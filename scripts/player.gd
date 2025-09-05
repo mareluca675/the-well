@@ -63,15 +63,41 @@ func _input(event) -> void:
 	
 	if reading_note:
 		if event is InputEventKey:
-			if Input.is_action_just_pressed("use"):
+			if Input.is_action_just_pressed("interact"):
 				close_note()
 		return
 		
 	if is_paused:
 		return
+		
+	if event is InputEventKey:
+		if Input.is_action_just_pressed("interact"):
+			if shape_cast_3d.is_colliding():
+				var collider = shape_cast_3d.get_collider(0)
+				if collider.get_parent().has_method("interact"):
+					collider.get_parent().interact()
+					paper_audio.play()
 
 
 func _physics_process(delta: float) -> void:
+	if is_paused:
+		return
+	
+	# Raycast script
+	
+	if shape_cast_3d.is_colliding():
+		if shape_cast_3d.get_collider(0).get_parent().has_method("interact"):
+			interact_container.show()
+			var collider_thing = shape_cast_3d.get_collider(0).get_parent()
+			interact_label.text = collider_thing.use_text
+		else:
+			if interact_container.visible:
+				interact_container.hide()
+	elif interact_container.visible:
+		interact_container.hide()
+	
+	if reading_note:
+		return
 	
 	# Player movement script
 	
@@ -90,8 +116,8 @@ func _physics_process(delta: float) -> void:
 	# get axis relative to camera view
 	var forward := camera.global_basis.z
 	var side := camera.global_basis.x
-	
 	var move_direction := forward * raw_input.y + side * raw_input.x
+	
 	# prevent walking into the sky/ground when camera pointed up/down
 	move_direction.y = 0.0
 	move_direction = move_direction.normalized()
@@ -117,22 +143,6 @@ func _physics_process(delta: float) -> void:
 		velocity.y += jump_power
 	
 	move_and_slide()
-	
-	# Raycast script
-	
-	if shape_cast_3d.is_colliding():
-		if shape_cast_3d.get_collider(0).get_parent().has_method("interact"):
-			interact_container.show()
-			var collider_thing = shape_cast_3d.get_collider(0).get_parent()
-			interact_label.text = collider_thing.use_text
-		else:
-			if interact_container.visible:
-				interact_container.hide()
-	elif interact_container.visible:
-		interact_container.hide()
-	
-	if reading_note:
-		return
 
 # ============================ Note code ============================
 
