@@ -24,6 +24,7 @@ albedo_texture = SubResource("NoiseTexture2D_rt2n2")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+collision_layer = 2
 
 [node name="TextBox" parent="." instance=ExtResource("3_sugp2")]
 transform = Transform3D(1.80152, 0, 0, 0, 2.03635, 0, 0, 0, 1.3384, -0.678178, 7.44297, -19.1758)
