@@ -34,6 +34,7 @@ text_file_path = "res://assets/texts/foobar.txt"
 
 [node name="TextBox" type="Node3D"]
 script = ExtResource("1_2g6gp")
+text_file_path = "res://assets/texts/text_file.txt"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("TextMesh_2g6gp")

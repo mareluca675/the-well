@@ -45,6 +45,7 @@ streams_count = 1
 stream_0/stream = ExtResource("2_qhqgy")
 
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 2
 script = ExtResource("1_khb8m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -210,5 +211,3 @@ environment = SubResource("Environment_dqkch")
 
 [node name="PaperAudio" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_qlg0r")
-
-[connection signal="visibility_changed" from="Head/Camera3D/ShapeCast3D" to="." method="_on_shape_cast_3d_visibility_changed"]
