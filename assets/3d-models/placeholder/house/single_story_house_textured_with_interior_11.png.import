@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6u56avfdnmxn"
-path.s3tc="res://.godot/imported/Barbarian_barbarian_texture.png-b3596a1a959b53f36fc755b5f3859482.s3tc.ctex"
+uid="uid://5qui8bsp5vfs"
+path.s3tc="res://.godot/imported/single_story_house_textured_with_interior_11.png-0fc41c419d092a9d7bda316c74e6d71f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "267533c91145eeae53d251a78b53814c"
+"md5": "864549117bc9fa0a371850e5d0c82820"
 }
 
 [deps]
 
-source_file="res://assets/3d-models/player/Barbarian_barbarian_texture.png"
-dest_files=["res://.godot/imported/Barbarian_barbarian_texture.png-b3596a1a959b53f36fc755b5f3859482.s3tc.ctex"]
+source_file="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior_11.png"
+dest_files=["res://.godot/imported/single_story_house_textured_with_interior_11.png-0fc41c419d092a9d7bda316c74e6d71f.s3tc.ctex"]
 
 [params]
 
@@ -27,8 +27,8 @@ compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=8
+roughness/src_normal="res://models/single_story_house_textured_with_interior_10.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

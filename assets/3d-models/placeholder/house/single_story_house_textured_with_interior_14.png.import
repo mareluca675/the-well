@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxpmlpom2padu"
-path.s3tc="res://.godot/imported/single_story_house_textured_with_interior_10.png-9a4ba3b5b153960aaf138ab066da6c65.s3tc.ctex"
+uid="uid://bkxve5kbf1c01"
+path.s3tc="res://.godot/imported/single_story_house_textured_with_interior_14.png-a1092e55653c6bd728ed5247ce5ea786.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8bbdd5c9f92773869948b8e98894c78d"
+"md5": "0976126869196174c5748f9a99e86c48"
 }
 
 [deps]
 
-source_file="res://assets/3d-models/house/single_story_house_textured_with_interior_10.png"
-dest_files=["res://.godot/imported/single_story_house_textured_with_interior_10.png-9a4ba3b5b153960aaf138ab066da6c65.s3tc.ctex"]
+source_file="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior_14.png"
+dest_files=["res://.godot/imported/single_story_house_textured_with_interior_14.png-a1092e55653c6bd728ed5247ce5ea786.s3tc.ctex"]
 
 [params]
 
@@ -28,7 +28,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://models/single_story_house_textured_with_interior_10.png"
+roughness/src_normal="res://models/single_story_house_textured_with_interior_14.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

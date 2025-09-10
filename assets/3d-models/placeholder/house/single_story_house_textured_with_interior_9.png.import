@@ -2,19 +2,19 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cix5qrqf3nxoe"
-path="res://.godot/imported/single_story_house_textured_with_interior_5.png-24bfaee917176530f10288e6f0926e27.ctex"
+uid="uid://qpucobn86boo"
+path="res://.godot/imported/single_story_house_textured_with_interior_9.png-ba5229fc4d95839991552d82bfb0a8a9.ctex"
 metadata={
 "vram_texture": false
 }
 generator_parameters={
-"md5": "487504534cf6eef1fe50d23a14c0d0ac"
+"md5": "78974fbcd7d52b649286c2f16a801e52"
 }
 
 [deps]
 
-source_file="res://assets/3d-models/house/single_story_house_textured_with_interior_5.png"
-dest_files=["res://.godot/imported/single_story_house_textured_with_interior_5.png-24bfaee917176530f10288e6f0926e27.ctex"]
+source_file="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior_9.png"
+dest_files=["res://.godot/imported/single_story_house_textured_with_interior_9.png-ba5229fc4d95839991552d82bfb0a8a9.ctex"]
 
 [params]
 

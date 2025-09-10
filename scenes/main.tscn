@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c5khycyxc5nyt" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://bspo265crb0j7" path="res://scenes/text_box.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://ewklpcyycyw3" path="res://assets/3d-models/house/single_story_house_textured_with_interior.glb" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://ewklpcyycyw3" path="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior.glb" id="4_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bqm6vc8jpnn5e" path="res://scenes/note_3d.tscn" id="4_tbgi4"]
 
 [sub_resource type="Gradient" id="Gradient_0wfyh"]

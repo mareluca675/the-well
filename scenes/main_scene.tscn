@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://g07xt6guol41"]
 
-[ext_resource type="PackedScene" uid="uid://dutavyx417bxu" path="res://scenes/player.tscn" id="1_w2twt"]
-[ext_resource type="PackedScene" uid="uid://ewklpcyycyw3" path="res://models/single_story_house_textured_with_interior.glb" id="2_pw63i"]
+[ext_resource type="PackedScene" uid="uid://c5khycyxc5nyt" path="res://scenes/player.tscn" id="1_w2twt"]
+[ext_resource type="PackedScene" uid="uid://ewklpcyycyw3" path="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior.glb" id="2_pw63i"]
 [ext_resource type="PackedScene" uid="uid://bqm6vc8jpnn5e" path="res://scenes/note_3d.tscn" id="3_7ykc4"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pw63i"]

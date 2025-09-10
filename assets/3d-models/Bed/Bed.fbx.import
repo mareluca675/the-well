@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cg2t5sgtkf6mq"
-path="res://.godot/imported/Barbarian.glb-346fb845b62020739c58a204e468f286.scn"
+uid="uid://danoi1qeu1uuc"
+path="res://.godot/imported/Bed.fbx-2134b14003b54b8d65608f88af12f179.scn"
 
 [deps]
 
-source_file="res://assets/3d-models/player/Barbarian.glb"
-dest_files=["res://.godot/imported/Barbarian.glb-346fb845b62020739c58a204e468f286.scn"]
+source_file="res://assets/3d-models/Bed/Bed.fbx"
+dest_files=["res://.godot/imported/Bed.fbx-2134b14003b54b8d65608f88af12f179.scn"]
 
 [params]
 
@@ -28,10 +28,11 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=false
+animation/trimming=true
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={}
-gltf/naming_version=1
-gltf/embedded_image_handling=1
+fbx/importer=0
+fbx/allow_geometry_helper_nodes=false
+fbx/embedded_image_handling=1

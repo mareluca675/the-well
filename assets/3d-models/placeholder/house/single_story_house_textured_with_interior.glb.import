@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://ewklpcyycyw3"
-path="res://.godot/imported/single_story_house_textured_with_interior.glb-824cf6ea0554d610882321875740526a.scn"
+path="res://.godot/imported/single_story_house_textured_with_interior.glb-1586851f06ac08a3b6d24619d1dc5751.scn"
 
 [deps]
 
-source_file="res://assets/3d-models/house/single_story_house_textured_with_interior.glb"
-dest_files=["res://.godot/imported/single_story_house_textured_with_interior.glb-824cf6ea0554d610882321875740526a.scn"]
+source_file="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior.glb"
+dest_files=["res://.godot/imported/single_story_house_textured_with_interior.glb-1586851f06ac08a3b6d24619d1dc5751.scn"]
 
 [params]
 
