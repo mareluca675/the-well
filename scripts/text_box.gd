@@ -1,24 +1,52 @@
 extends Node3D
 
-@export_file("*.txt") var text_file_path: String
+var dialog_lines = []
+var current_line_index = 0
+var current_char_index = 0
+var is_typing = false
+var text_mesh
 
-@onready var text_display_node: MeshInstance3D = $MeshInstance3D
+var typing_timer = Timer.new()
+var disappear_timer = Timer.new()
 
-func _ready() -> void:
-	load_text()
+func _ready():
+	text_mesh = $TextMesh
+	
+	typing_timer.wait_time = 0.1 
+	typing_timer.connect("timeout", on_typing_timeout)
+	add_child(typing_timer)
+	
+	disappear_timer.wait_time = 3.0 
+	disappear_timer.connect("timeout", on_disappear_timeout)
+	add_child(disappear_timer)
+	
 
-func load_text():
-	if is_instance_valid(text_display_node):
-		if text_display_node.mesh is TextMesh:
-			var file = FileAccess.open(text_file_path, FileAccess.READ)
-			if FileAccess.get_open_error() == OK:
-				
-				var text_mesh = text_display_node.mesh as TextMesh
-				text_mesh.text = file.get_as_text()
-				
-				file.close()
-				print("Loaded text file into TextBox: " + text_file_path)
-		else:
-			printerr("Failed to load text file: " + text_file_path)
+func on_dialog_request(lines):
+	self.dialog_lines = lines
+	start_next_line()
+
+func start_next_line():
+	text_mesh.visible = true
+	current_char_index = 0
+	if current_line_index < dialog_lines.size():
+		is_typing = true
+		text_mesh.mesh.text = ""
+		typing_timer.start()
 	else:
-		printerr("MeshInstance3D must have assigned TextMesh resource. please change this code accordingly if you removed it.")
+		current_line_index = 0
+		text_mesh.visible = false
+
+func on_typing_timeout():
+	if is_typing:
+		if current_char_index < dialog_lines[current_line_index].length():
+			text_mesh.mesh.text += dialog_lines[current_line_index][current_char_index]
+			current_char_index += 1
+		else:
+			is_typing = false
+			typing_timer.stop()
+			disappear_timer.start()
+
+func on_disappear_timeout():
+	disappear_timer.stop()
+	current_line_index += 1 
+	start_next_line()

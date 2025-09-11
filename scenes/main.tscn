@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsotghfp4veg"]
+[gd_scene load_steps=8 format=3 uid="uid://dsotghfp4veg"]
 
-[ext_resource type="PackedScene" uid="uid://c5khycyxc5nyt" path="res://scenes/player.tscn" id="1_o5qli"]
-[ext_resource type="PackedScene" uid="uid://bspo265crb0j7" path="res://scenes/text_box.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://cc17vl01i7wa2" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ewklpcyycyw3" path="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior.glb" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://bqm6vc8jpnn5e" path="res://scenes/note_3d.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" path="res://scenes/note_3d.tscn" id="4_tbgi4"]
 
 [sub_resource type="Gradient" id="Gradient_0wfyh"]
 colors = PackedColorArray(0.533333, 0.533333, 0.533333, 1, 1, 1, 1, 1)
@@ -24,11 +23,6 @@ albedo_texture = SubResource("NoiseTexture2D_rt2n2")
 
 [node name="Player" parent="." instance=ExtResource("1_o5qli")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
-collision_layer = 2
-
-[node name="TextBox" parent="." instance=ExtResource("3_sugp2")]
-transform = Transform3D(1.80152, 0, 0, 0, 2.03635, 0, 0, 0, 1.3384, -0.678178, 7.44297, -19.1758)
-text_file_path = "res://assets/texts/foobar.txt"
 
 [node name="Environment" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0115185, -0.0345354, 0.000371933)

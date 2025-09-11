@@ -22,6 +22,9 @@ class_name Player
 
 @onready var shape_cast_3d: ShapeCast3D = $Head/Camera3D/ShapeCast3D
 
+@onready var dialog_box:Node3D = $Head/Camera3D/TextBox
+signal dialog_request(dialog_lines)
+
 var camera_input_direction := Vector2.ZERO
 var last_movement_direction := Vector3.BACK
 
@@ -31,6 +34,7 @@ func _ready() -> void:
 	camera.set_current(true)
 	note_control.hide()
 	pause_control.hide()
+	self.connect("dialog_request", dialog_box.on_dialog_request)
 
 func _input(event) -> void:
 	# Camera motion
@@ -192,3 +196,10 @@ func show_pause_menu():
 		new_btn.text = note.name
 		notes_btn_container.add_child(new_btn)
 		new_btn.pressed.connect(note.interact)
+
+# ============================ Dialog code ============================
+
+func start_dialog():
+	var lines = ["Fuck, my head is cracking...", "How much did I even drink yesterday?"]
+	emit_signal("dialog_request", lines)
+	

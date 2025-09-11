@@ -1,6 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bspo265crb0j7"]
+[gd_scene load_steps=6 format=3 uid="uid://d8jjywollg70"]
 
 [ext_resource type="Script" uid="uid://ce4tveuejibq3" path="res://scripts/text_box.gd" id="1_2g6gp"]
+[ext_resource type="FontFile" uid="uid://1om2stwh32j0" path="res://assets/texts/Better VCR 9.0.1.ttf" id="2_dyarx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qdwih"]
+albedo_color = Color(1, 0, 0, 1)
 
 [sub_resource type="GDScript" id="GDScript_3fk4r"]
 script/source = "# TextMeshLoader.gd
@@ -28,13 +32,14 @@ func load_text_from_file():
 
 [sub_resource type="TextMesh" id="TextMesh_2g6gp"]
 resource_local_to_scene = true
-font_size = 40
+material = SubResource("StandardMaterial3D_qdwih")
+font = ExtResource("2_dyarx")
+font_size = 10
 script = SubResource("GDScript_3fk4r")
-text_file_path = "res://assets/texts/foobar.txt"
+text_file_path = ""
 
 [node name="TextBox" type="Node3D"]
 script = ExtResource("1_2g6gp")
-text_file_path = "res://assets/texts/text_file.txt"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="TextMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("TextMesh_2g6gp")
