@@ -4,7 +4,7 @@ class_name Note3D
 @export var use_text: String = "Read"
 @export var note_contents: String = "Hello!"
 @onready var collision_shape_3d: CollisionShape3D = $Area3D/CollisionShape3D
-@onready var note_mesh: CSGBox3D = $NoteMesh
+@onready var note_mesh: MeshInstance3D = $NoteMesh
 
 var player: Player
 

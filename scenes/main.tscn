@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cc17vl01i7wa2" path="res://scenes/player.tscn" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://ewklpcyycyw3" path="res://assets/3d-models/placeholder/house/single_story_house_textured_with_interior.glb" id="4_jyhfs"]
-[ext_resource type="PackedScene" path="res://scenes/note_3d.tscn" id="4_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://bqm6vc8jpnn5e" path="res://scenes/note_3d.tscn" id="4_tbgi4"]
 
 [sub_resource type="Gradient" id="Gradient_0wfyh"]
 colors = PackedColorArray(0.533333, 0.533333, 0.533333, 1, 1, 1, 1, 1)
