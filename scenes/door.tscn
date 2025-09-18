@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmdsronmol65d"]
+
+[ext_resource type="Script" uid="uid://j8c3vva11dtc" path="res://scripts/door.gd" id="1_2p0rt"]
+[ext_resource type="AudioStream" uid="uid://datb6cjlehavv" path="res://audio/sfx/door_squeak.ogg" id="2_squeak"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1n3a1"]
+size = Vector3(2, 3, 0.0824219)
+
+[node name="Door" type="Node3D"]
+script = ExtResource("1_2p0rt")
+
+[node name="DoorMesh" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0.0595215)
+size = Vector3(2, 3, 0.080957)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1.5, 0.0587891)
+shape = SubResource("BoxShape3D_1n3a1")
+
+[node name="SqueakAudio" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_squeak")
+volume_db = -10.0

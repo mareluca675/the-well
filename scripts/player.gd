@@ -78,9 +78,21 @@ func _input(event) -> void:
 		if Input.is_action_just_pressed("interact"):
 			if shape_cast_3d.is_colliding():
 				var collider = shape_cast_3d.get_collider(0)
-				if collider.get_parent().has_method("interact"):
-					collider.get_parent().interact()
-					paper_audio.play()
+				var interactable = collider.get_parent()
+				if interactable.has_method("interact"):
+					interactable.interact()
+
+					# Play appropriate sound for this interactable
+					var sound = null
+					if interactable.has_method("get_interaction_sound"):
+						sound = interactable.get_interaction_sound()
+
+					if sound:
+						paper_audio.stream = sound
+						paper_audio.play()
+					else:
+						# Fallback to default paper sound
+						paper_audio.play()
 
 
 func _physics_process(delta: float) -> void:
@@ -90,10 +102,14 @@ func _physics_process(delta: float) -> void:
 	# Raycast script
 	
 	if shape_cast_3d.is_colliding():
-		if shape_cast_3d.get_collider(0).get_parent().has_method("interact"):
+		var interactable = shape_cast_3d.get_collider(0).get_parent()
+		if interactable.has_method("interact"):
 			interact_container.show()
-			var collider_thing = shape_cast_3d.get_collider(0).get_parent()
-			interact_label.text = collider_thing.use_text
+			# Check if it's an Interactable with use_text, otherwise use default
+			if interactable.has_method("get") and interactable.get("use_text") != null:
+				interact_label.text = interactable.use_text
+			else:
+				interact_label.text = "Interact"
 		else:
 			if interact_container.visible:
 				interact_container.hide()
